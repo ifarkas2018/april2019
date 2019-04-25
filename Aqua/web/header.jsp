@@ -5,11 +5,13 @@
 --%>
 
 <%@page import="java.util.Enumeration"%>
+<%@page import="miscellaneous.AquaMethods"%>
+
 <!-- author: Ingrid Farkas -->
 <!-- header.jsp creates - company logo, company name and the navigation bar -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%  final String URL_EMP_ADM = "AquaBookstroe/Aqua"; // the URL for employees and administrators
+<%  final String URL_EMP_ADM = "AquaBookstore/Aqua"; // the URL for employees and administrators
     final String URL_CUST = "AquaBookstore"; // the YRL for customers
 %>
 <!DOCTYPE html>
@@ -28,9 +30,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <!-- online Bootstrap CSS -->
         
-        <meta http-equiv='cache-control' content='no-cache'>
+        <!-- <meta http-equiv='cache-control' content='no-cache'>
 <meta http-equiv='expires' content='0'>
-<meta http-equiv='pragma' content='no-cache'>
+<meta http-equiv='pragma' content='no-cache'> -->
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -78,20 +80,7 @@
                     &nbsp; &nbsp; <!-- adding some empty space -->
                 </div>
             </div>
-            <%! // sessVarExists: returns whether the session var. named name exists in the hSession
-                boolean sessVarExists(HttpSession hSession, String name){ 
-                    boolean attr_found = false; // is the atribute named name one of variables in the session
-                    String attrName = ""; // the name of the attribute in the session
-                    Enumeration enumAttr; // enumeration of variable names added to the session
-                    enumAttr = hSession.getAttributeNames(); // the names of the session variables 
-                    while ((enumAttr.hasMoreElements()) && (!attr_found)) { // while the Enumeration has more el.
-                        attrName = String.valueOf(enumAttr.nextElement()); // read the next element
-                        if (attrName.equals(name)) {
-                            attr_found = true; // attribute with the name emp_adr was found
-                        }
-                    }
-                    return attr_found;
-                }
+            <%! 
             %>
             <%
                 String emp_adm = ""; // is the user using the website for employees and administrators ( and not for customers ) 
@@ -106,7 +95,7 @@
                 
                 // sessVarExists: returns whether the session var. user_type exists in the session
                 // user_type: admin, emp, customer ( the possible values ) ( exists after the user tried to log in )
-                attr_found = sessVarExists(hSession1, "user_type"); 
+                attr_found = AquaMethods.sessVarExists(hSession1, "user_type"); 
                 if (attr_found) // if the attribute named user_type was found
                     userType = String.valueOf(hSession1.getAttribute("user_type")); // admin, emp, customer ( the possible values )
                 
@@ -122,7 +111,7 @@
                 */
                 
                 // is the user using using the website for employees and administrators ( and not for customers ) 
-                attr_found = sessVarExists(hSession1, "emp_adm"); // sessVarExists: returns whether the session var. emp_adm exists in the session
+                attr_found = AquaMethods.sessVarExists(hSession1, "emp_adm"); // sessVarExists: returns whether the session var. emp_adm exists in the session
                 if (attr_found) // if the attribute named emp_adm was found
                     emp_adm = String.valueOf(hSession1.getAttribute("emp_adm")); // read the value of  the attribute
                 
@@ -131,7 +120,7 @@
                         emp_adm = "true";
                         hSession1.setAttribute("emp_adm", emp_adm); // add the attribute to the session ( value : true )
                         
-                    } else if (URL_String.contains("AquaBookstore")){ // if the user is using the website for customers
+                    } else if (URL_String.contains(URL_CUST)){ // if the user is using the website for customers // AquaBookstore @@@@@@@@@@@@@@@@
                         emp_adm = "false";
                         hSession1.setAttribute("emp_adm", emp_adm); // add the attribute to the session ( value : false )
                     }
@@ -139,7 +128,7 @@
                 
                 // sessVarExists: returns whether the session var. logged_in exists in the session
                 // logged_in is TRUE if the user is logged in ( as employee or as administrator ) 
-                attr_found = sessVarExists(hSession1, "logged_in"); 
+                attr_found = AquaMethods.sessVarExists(hSession1, "logged_in"); 
                 if (attr_found) // if the attribute named logged_in was found
                     logged_in = String.valueOf(hSession1.getAttribute("logged_in")); // read the value of  the attribute
             %>
@@ -204,7 +193,7 @@
                                 </li>
                                 <!-- Contact link on the navbar -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
+                                    <a class="nav-link" href="contact_page.jsp">Contact</a>
                                 </li>
                             </ul>
                                 

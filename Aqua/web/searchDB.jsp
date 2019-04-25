@@ -2,13 +2,16 @@
     Document   : searchDB
     Created on : 18-Sep-2018, 00:54:05
     Author     : Ingrid Farkas
-    I used mysql-connector-java-5.1.47-bin.jar
+    called from search_form.jsp
+
+    @@@@@@@@@@@@@@@ I used mysql-connector-java-5.1.47-bin.jar
 --%>
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="connection.ConnectionManager"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.lang.CharSequence"%>
@@ -64,8 +67,9 @@
                                     String form_publyear = request.getParameter("publ_year"); // the text entered as the publ_year
                                 %>  
                                 <%
-                                    Class.forName("com.mysql.jdbc.Driver");
-                                    Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+                                    //Class.forName("com.mysql.jdbc.Driver");
+                                    //Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+                                    Connection con = ConnectionManager.getConnection(); //connecting to database ;
                                     Statement stmt = con.createStatement();
                                     
                                     String sQuery = "select b.title, b.price, b.publ_year, b.descr, a.au_name from book b, author a where (b.au_id = a.au_id)";

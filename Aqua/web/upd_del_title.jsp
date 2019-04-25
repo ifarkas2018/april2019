@@ -1,7 +1,8 @@
 <%-- 
     Document   : upd_del_title
     Created on : 14-Mar-2019, 04:27:45
-    Author     : user
+    Author     : Ingrid Farkas
+    called from update_prev.jsp
 --%>
 
 <!-- upd_del_title.jsp - shows the form for entering the title, author, ISBN of the book whose inform. is updated ( or deleted ) -->
@@ -50,7 +51,17 @@
                                 %>
                                
                                 <br/> 
-                                Please enter the following information about the book to be updated.
+                                <% if (source.equals("Update Book")) {
+                                %>
+                                    Please enter the information about the book
+                                <% } else if (source.equals("Delete Book")) {
+                                %>
+                                    Please enter the information about the book
+                                <%
+                                   }
+                                %>
+                                
+                                <br />
                                 <br />
                                 <% if (source.equals("Update Book")) {
                                 %>
@@ -93,9 +104,19 @@
                                             </div>
                                         </div>    
                                     </div>
-                                        
-                                    <!-- adding the Next button to the form; btn-sm is used for smaller ( narrower ) size of the control -->
-                                    <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">Next</button>
+                                    
+                                    <%
+                                    if (source.equals("Delete Book")) {
+                                    %>
+                                        <!-- adding the Delete button to the form; btn-sm is used for smaller ( narrower ) size of the control -->
+                                        <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">Delete</button>
+                                    <% } else {
+                                    %>
+                                       <!-- adding the Next button to the form; btn-sm is used for smaller ( narrower ) size of the control -->
+                                       <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">Next</button>
+                                    <% }
+                                    %>
+                                    
                                     <!-- adding a new container -->
                                     <div class="container">
                                         <div class="row">
@@ -126,8 +147,6 @@
             <div class="col">
                 &nbsp; &nbsp;
             </div>
-        </div> 
-
-        
+        </div>    
     </body>
 </html>

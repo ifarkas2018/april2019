@@ -8,6 +8,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.SQLException"%>
+<%@page import="connection.ConnectionManager"%>
 
 <!-- update_page.jsp - when the user clicks on the Next button on the page update_title.jsp -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,9 +31,11 @@
             
             try {
                 // connection with the database 
-                Class.forName("com.mysql.jdbc.Driver");
+                //Class.forName("com.mysql.jdbc.Driver");
                 // @@@@@@@@@@@@@@@@@@Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
-                Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+                //Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+                Connection con = ConnectionManager.getConnection(); //connecting to database 
+                
                 Statement stmt = con.createStatement();
 
                 prev_title = request.getParameter("prev_title"); // the text entered as the title

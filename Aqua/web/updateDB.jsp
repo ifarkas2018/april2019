@@ -1,7 +1,8 @@
 <%-- 
     Document   : updateDB
     Created on : 14-Mar-2019, 04:09:42
-    Author     : user
+    Author     : Ingrid Farkas
+    called from update_form.jsp
 --%>
 
 <%@page import="java.sql.ResultSet"%>
@@ -9,6 +10,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.SQLException"%>
+<%@page import="connection.ConnectionManager"%>
         
 <%@page import="java.sql.PreparedStatement"%>
 
@@ -96,10 +98,11 @@
             // form_isbn: the new isbn of the book which needs to be written to the database
             String prev_isbn = (String)hSession.getAttribute("prev_isbn"); // retrieving the ISBN
             
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
             //@@@@@@@@@@ Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
-            Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
-         
+            //Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+            Connection con = ConnectionManager.getConnection(); //connecting to database ;
+            
             Statement stmt = con.createStatement();
             
             String rs_query=""; 

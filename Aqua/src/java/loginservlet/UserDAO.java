@@ -1,7 +1,7 @@
 /*
  * author: Ingrid Farkas
  * project: Aqua Bookstore
- * UserDAO.java : handles running the SQL query ( LoginServlet.java, method doPost )
+ * UserDAO.java : handles running the SQL query ( LoginServlet.java - method doPost, SignUpServlet - method doPost )
  */
 package loginservlet;
 
@@ -35,9 +35,9 @@ public class UserDAO {
                             + "';";
 	    
         try {
-           currentCon = ConnectionManager.getConnection(); //connecting to database 
-           stmt = currentCon.createStatement(); 
-           rs = stmt.executeQuery(loginQuery);	// executing the query        
+            currentCon = ConnectionManager.getConnection(); //connecting to database 
+            stmt = currentCon.createStatement(); 
+            rs = stmt.executeQuery(loginQuery);	// executing the query        
             
             if (rs.next()) { // the user with that username, password exists in the database
                 is_admin = rs.getString("adm"); // is that an administrator login
@@ -54,7 +54,7 @@ public class UserDAO {
             System.out.println("Log In failed: An Exception has occurred! " + ex);
         } 
 	    
-        //some exception handling
+        // some exception handling
         finally {
             if (rs != null){
                 try {

@@ -1,7 +1,7 @@
 /*
  * author: Ingrid Farkas
  * project: Aqua Bookstore
- * SignUp.java : when the user clicks on the Sign Up link ( on the navbar ) or after a Sign Up on the "To SignUp" button this servlet is triggered
+ * SignUp.java : when the user clicks on the Sign Up link ( on the navbar ) this servlet is triggered
  */
 package loginservlet;
 

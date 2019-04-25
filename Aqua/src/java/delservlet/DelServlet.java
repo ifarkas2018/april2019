@@ -1,3 +1,8 @@
+/*
+ * author: Ingrid Farkas
+ * project: Aqua Bookstore
+ * DelServlet.java : handles running the SQL query ( used in upd_del_title.jsp for Delete )
+ */
 package delservlet;
 
 // importing classes
@@ -13,13 +18,15 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.Connection;
+import connection.ConnectionManager;
 import delservlet.DetermineID; // contains methods for retrieving the ID
 
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author user
+ * @author Ingridi Farkas
+ * called from upd_del_title.jsp
  */
 @WebServlet(urlPatterns = {"/DelServlet"}) // if the URL is /DelServlet
 public class DelServlet extends HttpServlet {
@@ -84,9 +91,10 @@ public class DelServlet extends HttpServlet {
             String prev_author = request.getParameter("prev_author"); // the author
             String prev_isbn = request.getParameter("prev_isbn"); // ISBN
          
-            Class.forName("com.mysql.jdbc.Driver");
+            // Class.forName("com.mysql.jdbc.Driver");
             //@@@@@@@@@@ Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "root");
-            Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+            // Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3305/bookstore?useSSL=false", "root", "bird&2018");  
+            Connection con = ConnectionManager.getConnection(); //connecting to database 
             Statement stmt = con.createStatement();
             
             

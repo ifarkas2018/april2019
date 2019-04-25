@@ -63,9 +63,7 @@ public class LogOutServlet extends HttpServlet {
         HttpSession hSession = request.getSession(); // retrieve the session to which I am going to add variables
         hSession.setAttribute("logged_in", "false" ); // set the session variable logged_in ( whether the user is logged in 
         hSession.setAttribute("emp_adm", "false"); // the user is not anymore using the website for employees and administrators
-        // hSession.setAttribute("sign_up", "false"); // the administrator is not signing up a user
         hSession.setAttribute("user_type", "customer"); // the user type is now customer
-        // setting the hSession ( to pass them to the page error_succ.jsp ) and loading the page error_succ.jsp
         String sTitle = "Log Out"; // used for passing the title to the JSP script
         String sMessage = "SUCC_LOGOUT"; // used for passing the message to the JSP script	 
         hSession.setAttribute("source_name", "Log Out"); // on which page I am now

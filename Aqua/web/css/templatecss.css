@@ -166,3 +166,19 @@ and open the template in the editor.
     margin-right: auto;
 }
 
+/* setting the colors of the email link ( page contact_info.jsp ) */
+/* color of the email link after the link was clicked on */
+/*
+            .email a:visited {
+                color: #7F8C8D !important;  / rgb(180, 187, 184) / 
+}
+            / color of the email link when the user hovers on it / 
+            .email a:hover, a:active {
+                color: rgb(180, 187, 184) !important;  / rgb(0,128,192) rgb(215,152,235) - purple /
+            }
+            
+            / color of the email link /
+            .email a {
+                color: #17A2B8 !important;  / #17A2B8 teal button /
+            }
+*/

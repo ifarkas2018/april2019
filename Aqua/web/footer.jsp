@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
     </head>
     <body> 
         <footer>
@@ -50,25 +51,29 @@
                             <ul>
                                 <li> 
                                     <div class="container"> 
-                                        <div class="row"> <!-- adding a new row the grid -->
-                                            <div class="col">
-                                                <!-- input element used for entering the email; form-control-sm is used for smaller size of the input element -->
-                                                <input class="form-control form-control-sm" type="text" placeholder="Email">
+                                        <!-- after clicking on the button the SubscrServl servlet is called -->
+                                        <form action="SubscrServl" method="post"> <!-- action="SubscrServl" method="post" -->
+                                            <div class="row"> <!-- adding a new row the grid -->
+                                                <div class="col">
+                                                    <!-- input element used for entering the email; form-control-sm is used for smaller size of the input element -->
+                                                    <input class="form-control form-control-sm" name="subscr_email" id="subscr_email" maxlength="35" id="subscr_email" type="text" placeholder="Email" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row"> <!-- adding a new row the grid -->
-                                            <div class="col">
-                                                &nbsp; &nbsp;
+                                            
+                                            <div class="row"> <!- adding a new row the grid ->
+                                                <div class="col">
+                                                    &nbsp; &nbsp;
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="row"> <!-- adding a new row the grid -->
-                                            <div class="col">
-                                                <!-- adding the button Subscribe, btn-info is used for defining the color of the button,
-                                                     form-control-sm is used for smaller size of the button -->
-                                                    <button type="button" class="btn btn-info btn-sm">Subscribe</button>
+                                            
+                                            <div class="row"> <!-- adding a new row the grid -->
+                                                <div class="col">
+                                                    <!-- adding the button Subscribe, btn-info is used for defining the color of the button,
+                                                         form-control-sm is used for smaller size of the button -->
+                                                        <button type="submit" class="btn btn-info btn-sm" id="btnSubscr">Subscribe</button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div> <!-- end of class="container" -->
                                 </li>
                             </ul> 
@@ -106,5 +111,20 @@
         </footer> 
         <!-- ??????????????????????????????????????????????????????????? -->
         <!-- </div> --> <!-- is this NEEDED end of class="container" -->
+       
+        
+        <script>
+            
+        // IsEmail : returns true if the email address is valid ( otherwise it returns false )
+        function IsEmail(email) {
+            // regex pattern is used for validating email 
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(!regex.test(email)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        </script>
     </body>
 </html>

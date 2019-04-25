@@ -1,3 +1,8 @@
+/*
+ * author: Ingrid Farkas
+ * project: Aqua Bookstore
+ * DetermineID.java : used in DelServlet.java
+ */
 package delservlet;
 
 // importing packages

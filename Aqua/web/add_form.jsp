@@ -1,7 +1,7 @@
 <%-- 
     Document   : add_form.jsp
     Created on : 08-Nov-2018, 13:02:11
-    Author     : user
+    Author     : Ingrid Farkas
 --%>
 <!-- add_form.jsp - adds the form on the page Add Book -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -40,7 +40,7 @@
                                 <br/>
                                 <h3>Add a Book</h3>
                                 <br/> 
-                                <!-- after clicking on the button addDB.jsp is shown -->
+                                <!-- after clicking on the button AddServlet is shown -->
                                 <form id="add_book" action="AddServlet" method="post">
                                     <!-- creating the input element for the title -->
                                     <div class="form-group">

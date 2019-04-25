@@ -1,7 +1,7 @@
 <%-- 
     Document   : update_form
     Created on : 13-Mar-2019, 11:36:48
-    Author     : user
+    Author     : Ingrid Farkas
 --%>
 
 <!-- update_form.jsp - adds the form to the page Update Book -->
@@ -38,9 +38,12 @@
                         <div class="row"> <!-- adding a new row to the Bootstrap grid -->
                             <div class="col">
                                 &nbsp; &nbsp;
-                                <br/>
+                                <br />
                                 <h3>Update a Book</h3>
                                 <br/> 
+                                Please enter the new information about the book 
+                                <br />
+                                <br />
                                 <!-- after clicking on the button updateDB.jsp is shown -->
                                 <form id="update_book" action="updateDB.jsp" method="post">
                                     <!-- creating the input element for the title -->

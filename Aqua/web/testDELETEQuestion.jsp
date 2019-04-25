@@ -1,27 +1,38 @@
 <%-- 
-    Document   : signup_form ( included in signup_page.jsp )
-    Created on : 06-Apr-2019, 00:14:14
-    Author     : Ingrid Farkas
-    called from signup_page.jsp
+    Document   : test
+    Created on : 21-Mar-2019, 16:47:29
+    Author     : user
 --%>
 
-<!-- signup_form.jsp - shows the form for entering the username, password, first name, last name, whether the user is an administrator  -->
-<!--                 - included in signup_page.jsp -->
+<%-- 
+    Document   : update_title
+    Created on : 14-Mar-2019, 04:27:45
+    Author     : user
+--%>
+
+<!-- update_title.jsp - shows the form for entering the title, author, ISBN of the book whose inform. is updated -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- internal style sheet --> 
+        <%
+            HttpSession hSession = request.getSession(); // the session to which I am going to add attributes
+            String source = (String)hSession.getAttribute("source_name"); // on which page I am now
+        %>
+        <title> <%= source %> </title>
+        <!-- internal style sheet -->
         <style>
             .text_color {
                 color:red; /* red text color */
             }
+            
         </style>
     </head>
     
-    <title>Sign Up</title>
     <body>
+        
+        <% source = "Update Book"; %>
         <!-- adding a new row to the Bootstrap grid; class whitebckgr is for setting the background to white -->
         <div class="whitebckgr">
             <div class="row"> <!-- adding a new row to the Bootstrap grid -->
@@ -41,54 +52,49 @@
                             <div class="col">
                                 &nbsp; &nbsp;
                                 <br/>
-                                <h3>Sign Up</h3> <!-- title on the web page -->
+                                <% 
+                                    out.print("<h3>" + source + "</h3>"); // source is Update Book ( for the Update ), or Delete Book ( for the Delete )                                  
+                                %>
+                                
+                                <!-- <h3>Update a Book</h3> -->
                                 <br/> 
-                                <form id="signup" action="SignUpServlet" method="post">                                   
-                                    <!-- creating the input element for the username -->
+                                Please enter the following information about the book to be updated.
+                                <br />
+                                <% if (source.equals("Update Book")) {
+                                %>
+                                       <!-- after clicking on the button update_page.jsp is shown -->
+                                       <form id="upd_del_book" action="update_page.jsp" method="post">
+                                <%
+                                   } else if (source.equals("Delete Book")) {
+                                %>
+                                       <!-- after clicking on the button delservlet is shown -->
+                                       <form id="upd_del_book" action="delservlet" method="post">
+                                <%
+                                   }
+                                %>
+                                
+                                    <!-- creating the input element for the title -->
                                     <div class="form-group">
-                                        <label for="lab_user">Username:</label> <!-- username label -->
-                                        <!-- filling in the username: required -->
-                                        <input type="text" class="form-control form-control-sm" name="username" id="username" required> 
+                                        <label for="labtitle">Title:</label> <!-- title label -->
+                                        <!-- filling in the title: required -->
+                                        <input type="text" class="form-control form-control-sm" name="prev_title" id="title" required> 
+                                        
                                         <label class="text_color">* Required Field</label>
                                     </div>
                                         
-                                    <!-- creating the input element for the password -->
+                                    <!-- creating the input element for the author -->
                                     <div class="form-group">
-                                        <label for="lab_passw">Password:</label> <!-- password name label -->
-                                        <!-- filling in the passw: required -->
-                                        <input type="password" class="form-control form-control-sm" name="passw" id="passw" required> 
+                                        <label for="labauthor">Author's Name:</label> <!-- author's name label -->
+                                        <!-- filling in the author: required -->
+                                        <input type="text" class="form-control form-control-sm" name="prev_author" id="author" required> 
                                         <label class="text_color">* Required Field</label>
                                     </div>
-                                    
-                                    <!-- creating the input element for the first name -->
+                
+                                    <!-- creating the input element for the ISBN -->
                                     <div class="form-group">
-                                        <label for="lab_fname">First Name:</label> <!-- first name label -->
-                                        <input type="text" class="form-control form-control-sm" name="first_name" id="first_name"> 
-                                    </div>
-
-                                    <!-- creating the input element for the last name -->
-                                    <div class="form-group">
-                                        <label for="lab_lname">Last Name:</label> <!-- last name label -->
-                                        <input type="text" class="form-control form-control-sm" name="last_name" id="last_name"> 
-                                    </div>
-
-                                    <!-- creating the input element for the administrator -->
-                                    <div class="form-group">
-                                        <label for="lab_admin">Administrator:</label> <!-- administrator label -->
-                                        <div class="form-check">
-                                            <!-- Yes radio button -->
-                                            <input class="form-check-input" type="radio" name="admin" id="admin_yes" value="adm_yes">
-                                            <label class="form-check-label" for="admin_yes">
-                                                Yes
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <!-- No radio button -->
-                                            <input class="form-check-input" type="radio" name="admin" id="admin_no" value="adm_no" checked>
-                                            <label class="form-check-label" for="admin_no">
-                                                No
-                                            </label>
-                                        </div>
+                                        <label for="labisbn">ISBN:</label> <!-- ISBN label -->
+                                        <!-- input field for the ISBN: maximum 13 characters -->
+                                        <input type="text" class="form-control form-control-sm" maxlength="13" name="prev_isbn" id="isbn"> 
                                     </div>
                                                                                
                                     <div class="container">
@@ -99,8 +105,8 @@
                                         </div>    
                                     </div>
                                         
-                                    <!-- adding the Submit button to the form; btn-sm is used for smaller ( narrower ) size of the control -->
-                                    <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">Submit</button>
+                                    <!-- adding the Next button to the form; btn-sm is used for smaller ( narrower ) size of the control -->
+                                    <button type="submit" id="btnSubmit" class="btn btn-info btn-sm">Next</button>
                                     <!-- adding a new container -->
                                     <div class="container">
                                         <div class="row">
@@ -134,4 +140,3 @@
         </div> 
     </body>
 </html>
-

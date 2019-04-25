@@ -1,7 +1,7 @@
 /*
  * author: Ingrid Farkas
  * project: Aqua Bookstore
- * UserDAO.java : handles running the SQL query ( LoginServlet.java, method doPost )
+ * AddDAO.java : handles running the SQL query ( used in AddServlet.java )
  */
 package addservlet;
 
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  * @author user
  */
 public class AddDAO {
-    static Connection con = null;
-    static ResultSet rs = null;  // object where the query's results are stored 
+    static Connection con;
+    static ResultSet rs = null;  // object where the query's results are stored
     
     // publExistsAdd : checks whether the record with the entered PUBLISHER NAME and CITY exists. If it doesn't then adds the new record.
     // if an exception occurred returns TRUE otherwise returns FALSE

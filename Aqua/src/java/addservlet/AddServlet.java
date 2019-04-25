@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author user
+ * @author Ingrid Farkas
  */
 public class AddServlet extends HttpServlet {
 

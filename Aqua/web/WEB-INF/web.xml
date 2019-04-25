@@ -28,6 +28,10 @@
         <servlet-name>AddServlet</servlet-name>
         <servlet-class>addservlet.AddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubscrServl</servlet-name>
+        <servlet-class>subscrservlet.SubscrServl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>delservlet</servlet-name>
         <url-pattern>/delservlet</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>AddServlet</servlet-name>
         <url-pattern>/AddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubscrServl</servlet-name>
+        <url-pattern>/SubscrServl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

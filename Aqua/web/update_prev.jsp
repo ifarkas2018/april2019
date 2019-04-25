@@ -1,7 +1,7 @@
 <%-- 
     Document   : update_prev
     Created on : 14-Mar-2019, 04:56:04
-    Author     : user
+    Author     : Ingrid Farkas
 --%>
 
 <!-- update_prev.jsp - when the user clicks on the Update button ( the navigation bar ) this web page is shown -->
